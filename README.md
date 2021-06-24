@@ -25,6 +25,8 @@ Use MATLAB Add-On Explorer to install the necessary add-ons ```Robotics Systems 
 ## Usage
 The ```main.m``` file contains the code to build and run the planner. The program returns a search tree of all the visited nodes and a tree of the generated feasible path. 
 
+## Notes
+The PSO-RRT* algorithm is similar to P-RRT* algorithm with the difference being in sampling process adopted. PSO-RRT* makes use of PSO while P-RRT* uses APF. PSOQ-RRT* is similar to PQ-RRT* in the same manner.  
 
 ## References
 <a id = "1">[1]</a> 
