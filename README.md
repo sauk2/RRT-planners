@@ -19,8 +19,8 @@ The PSO-RRT* planner makes use of Particle Swarm Optimization (PSO) from Kennedy
 
 All planners make use of the ```checkIfGoalIsReached.m``` function to check if the search should be terminated. The PSO sampling uses the fitness function in ```sphere2D.m```.
 
-## Installations
-Install the necessary add-ons ```Robotics Systems Toolbox``` and ```Navigation Toolbox``` from MATLAB Add-On Explorer.
+## Installation
+Use MATLAB Add-On Explorer to install the necessary add-ons ```Robotics Systems Toolbox``` and ```Navigation Toolbox```.
 
 ## Usage
 The ```main.m``` file contains the code to build and run the planner. The program returns a search tree of all the visited nodes and a tree of the generated feasible path. 
