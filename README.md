@@ -14,7 +14,7 @@ Quick-RRT* (Q-RRT*) as described in Jeong et al. [[4]](#4) combines RRT* with an
 The PQ-RRT* from Li et al. [[5]](#5) is a hybridization of the P-RRT* and Q-RRT* planners respectively. The sampling is carried out by using APF as seen in P-RRT* and parent search is carried out by using the ancestry search procedures as seen in Q-RRT*.  
 
 #### ```planPSORRTStar.m``` & ```planPSOQRRTStar.m```
-The PSO-RRT* planner makes use of Particle Swarm Optimization (PSO) from Kennedy et al. [[6]](#6), for sampling. A population is selected in the state-bounds and is incrementally directed towards the goal. 2D sphere centred at the goal is selected as the fitness function. PSOQ-RRT* makes use of the ancestry search procedure from Q-RRT* to select better parents for the candidate node.
+The PSO-RRT* planner makes use of Particle Swarm Optimization (PSO) technique from Kennedy et al. [[6]](#6), for sampling. A population is selected in the state-bounds and is incrementally directed towards the goal. 2D sphere centred at the goal is selected as the fitness function. PSOQ-RRT* makes use of the ancestry search procedure from Q-RRT* to select better parents for the candidate node.
 
 
 All planners make use of the ```checkIfGoalIsReached.m``` function to check if the search should be terminated. The PSO sampling uses the fitness function in ```sphere2D.m```.
