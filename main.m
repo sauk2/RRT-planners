@@ -15,17 +15,17 @@ load workspace\mapsStatic.mat
 % Add map to state validator
 sv.Map = map2D_1;
 
-sv.ValidationDistance = 0.01;
+sv.ValidationDistance = 0.1;
 
 ss.StateBounds = [sv.Map.XWorldLimits; sv.Map.YWorldLimits; [-pi pi]];
 
 % Build planner using ss and sv
-planner = planPSOQRRTStar(ss, sv);
+planner = planQRRTStar(ss, sv);
 planner.MaxConnectionDistance = 15;
-planner.MaxIterations = 1e5;
+planner.MaxIterations = 1e4;
 
 % Continue planning after reaching goal 
-planner.ContinueAfterGoalReached = true;
+planner.ContinueAfterGoalReached = false;
 
 % Time limit for planning
 % planner.MaxTime = 10;
@@ -74,4 +74,4 @@ plot(solnInfo.TreeData(:, 1), solnInfo.TreeData(:, 2), '.-')
 plot(pthObj.States(:, 1), pthObj.States(:, 2), 'r-', 'LineWidth', 2)
 plot(start(1), start(2), 'ko')
 plot(goal(1), goal(2), 'ko')
-title("PSO Q-RRT* | Map 2D-1")
+title("Q-RRT* | Map 2D-1")
