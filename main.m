@@ -13,15 +13,15 @@ sv = validatorOccupancyMap(ss);
 load workspace\mapsStatic.mat
 
 % Add map to state validator
-sv.Map = map2D_1;
+sv.Map = mapMaze_2;
 
 sv.ValidationDistance = 0.1;
 
 ss.StateBounds = [sv.Map.XWorldLimits; sv.Map.YWorldLimits; [-pi pi]];
 
 % Build planner using ss and sv
-planner = planQRRTStar(ss, sv);
-planner.MaxConnectionDistance = 15;
+planner = planPQRRTStar(ss, sv);
+planner.MaxConnectionDistance = 10;
 planner.MaxIterations = 1e4;
 
 % Continue planning after reaching goal 
@@ -31,8 +31,8 @@ planner.ContinueAfterGoalReached = false;
 % planner.MaxTime = 10;
 
 % for map2D_1
-start = [40, 40, 0];
-goal = [70, 40, 0];
+% start = [40, 40, 0];
+% goal = [70, 40, 0];
 
 % for map2D_2
 % start = [30, 45, 0];
@@ -51,8 +51,8 @@ goal = [70, 40, 0];
 % goal = [60, 30, 0];
 
 % for mapMaze_2
-% start = [10, 10, 0];
-% goal = [90, 90, 0];
+start = [10, 10, 0];
+goal = [90, 90, 0];
 
 % for mapMaze_3
 % start = [60, 60, 0];
@@ -70,8 +70,18 @@ f1 = figure;
 f1.Position = [400 200 600 500];
 hold on
 show(sv.Map)
-plot(solnInfo.TreeData(:, 1), solnInfo.TreeData(:, 2), '.-')
+% plot(solnInfo.TreeData(:, 1), solnInfo.TreeData(:, 2), '.-')
 plot(pthObj.States(:, 1), pthObj.States(:, 2), 'r-', 'LineWidth', 2)
 plot(start(1), start(2), 'ko')
 plot(goal(1), goal(2), 'ko')
-title("Q-RRT* | Map 2D-1")
+title("PQ-RRT* | Map")
+hold off
+
+bezierOutput = bezierCurveSmoothing(pthObj);
+
+f2 = figure;
+f1.Position = [400 200 600 500];
+hold on
+show(sv.Map)
+plot(bezierOutput.bx, bezierOutput.by, 'r-', 'LineWidth', 2)
+hold off
