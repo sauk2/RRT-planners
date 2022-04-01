@@ -19,6 +19,8 @@ The PSO-RRT* planner makes use of Particle Swarm Optimization (PSO) technique fr
 
 All planners make use of the ```checkIfGoalIsReached.m``` function to check if the search should be terminated. The PSO sampling uses the fitness function in ```sphere2D.m```.
 
+A function called ```bezierCurveSmoothing.m``` has been added to create smooth curves between path states.
+
 ## Installation
 Use MATLAB Add-On Explorer to install the necessary add-ons ```Robotics Systems Toolbox``` and ```Navigation Toolbox```.
 
